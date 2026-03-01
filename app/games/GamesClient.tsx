@@ -129,7 +129,7 @@ export default function GamesClient({
                   placeholder="Search games..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-card border border-input rounded-lg px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-ring transition-colors"
+                  className="w-full bg-card border border-input rounded-none px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-ring transition-colors"
                 />
               </div>
 
@@ -141,7 +141,7 @@ export default function GamesClient({
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as SortOption)}
-                  className="w-full bg-card border border-input rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-ring"
+                  className="w-full bg-card border border-input rounded-none px-3 py-2 text-sm text-foreground focus:outline-none focus:border-ring"
                 >
                   <option value="most-screenshots">Most screenshots</option>
                   <option value="newest">Newest first</option>
@@ -187,7 +187,7 @@ export default function GamesClient({
                       >
                         <div className="flex items-center gap-2.5">
                           <div
-                            className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
+                            className={`w-4 h-4 rounded-none border flex items-center justify-center transition-colors ${
                               isActive
                                 ? 'bg-primary border-primary'
                                 : 'border-input'

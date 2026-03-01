@@ -11,7 +11,7 @@ interface GameCardProps {
 export default function GameCard({ name, slug, cover_image_url, genre_names, screenshot_count }: GameCardProps) {
   return (
     <Link href={`/games/${slug}`} className="group block">
-      <div className="bg-card rounded-lg overflow-hidden border border-border hover:border-ring transition-all duration-300">
+      <div className="bg-card rounded-none overflow-hidden border border-border hover:border-ring transition-all duration-300">
         {/* Cover Image */}
         <div className="aspect-[3/4] relative overflow-hidden">
           {cover_image_url ? (
@@ -37,7 +37,7 @@ export default function GameCard({ name, slug, cover_image_url, genre_names, scr
               {genre_names.map((genre) => (
                 <span
                   key={genre}
-                  className="text-xs px-2 py-0.5 rounded border border-border text-muted-foreground"
+                  className="text-xs px-2 py-0.5 rounded-none border border-border text-muted-foreground"
                 >
                   {genre}
                 </span>

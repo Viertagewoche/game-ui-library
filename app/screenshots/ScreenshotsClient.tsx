@@ -101,7 +101,7 @@ export default function ScreenshotsClient({
                   placeholder="Search screenshots..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-card border border-input rounded-lg px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-ring transition-colors"
+                  className="w-full bg-card border border-input rounded-none px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-ring transition-colors"
                 />
               </div>
 
@@ -113,7 +113,7 @@ export default function ScreenshotsClient({
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as SortOption)}
-                  className="w-full bg-card border border-input rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-ring"
+                  className="w-full bg-card border border-input rounded-none px-3 py-2 text-sm text-foreground focus:outline-none focus:border-ring"
                 >
                   <option value="newest">Newest first</option>
                   <option value="oldest">Oldest first</option>

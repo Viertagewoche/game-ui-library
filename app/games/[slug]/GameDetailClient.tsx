@@ -65,7 +65,7 @@ export default function GameDetailClient({
             <img
               src={game.cover_image_url}
               alt={game.name}
-              className="w-24 h-32 object-cover rounded-lg border border-border shadow-2xl"
+              className="w-24 h-32 object-cover rounded-none border border-border shadow-2xl"
             />
           )}
           <div>
@@ -84,7 +84,7 @@ export default function GameDetailClient({
                 {genreNames.map((genre) => (
                   <span
                     key={genre}
-                    className="text-xs px-2.5 py-1 rounded border border-border text-muted-foreground"
+                    className="text-xs px-2.5 py-1 rounded-none border border-border text-muted-foreground"
                   >
                     {genre}
                   </span>

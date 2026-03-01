@@ -76,7 +76,7 @@ export default function ScreenshotModal({
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors"
+        className="absolute top-6 right-6 z-10 w-10 h-10 rounded-none bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors"
         aria-label="Close modal"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,7 +88,7 @@ export default function ScreenshotModal({
       {hasPrev && onPrev && (
         <button
           onClick={onPrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground text-xl transition-colors"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-none bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground text-xl transition-colors"
           aria-label="Previous screenshot"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,7 +101,7 @@ export default function ScreenshotModal({
       {hasNext && onNext && (
         <button
           onClick={onNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground text-xl transition-colors"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-none bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground text-xl transition-colors"
           aria-label="Next screenshot"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -117,7 +117,7 @@ export default function ScreenshotModal({
           <img
             src={screenshot.image_url}
             alt={screenshot.title}
-            className="w-full rounded-lg"
+            className="w-full rounded-none"
           />
         </div>
 
@@ -132,7 +132,7 @@ export default function ScreenshotModal({
                   {screenshot.element_names.map((el) => (
                     <span
                       key={el}
-                      className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-border text-muted-foreground"
+                      className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-none border border-border text-muted-foreground"
                     >
                       {el}
                     </span>
@@ -147,7 +147,7 @@ export default function ScreenshotModal({
             {screenshot.game_slug && (
               <Link
                 href={`/games/${screenshot.game_slug}`}
-                className="px-4 py-2 rounded-lg border border-border text-sm text-muted-foreground hover:text-foreground hover:border-ring transition-colors"
+                className="px-4 py-2 rounded-none border border-border text-sm text-muted-foreground hover:text-foreground hover:border-ring transition-colors"
               >
                 Game Page
               </Link>
@@ -156,7 +156,7 @@ export default function ScreenshotModal({
             {/* Download Button */}
             <button
               onClick={handleDownload}
-              className="px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
+              className="px-4 py-2 rounded-none bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
             >
               Download
             </button>
