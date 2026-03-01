@@ -227,7 +227,7 @@ export default function Navbar() {
                     <div className="px-4 py-8 text-center text-muted-foreground text-sm">
                       No results for &ldquo;{query}&rdquo;
                     </div>
-                  )}}
+                  )}
                 </div>
               )}
             </div>
