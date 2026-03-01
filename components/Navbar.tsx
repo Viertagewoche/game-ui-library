@@ -86,65 +86,86 @@ export default function Navbar() {
     return () => clearTimeout(timeout)
   }, [query])
 
-  const isActive = (path: string) => pathname.startsWith(path)
+  const isActive = (path: string) => pathname === path || pathname.startsWith(path + '/')
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold tracking-tight">
-            <span className="text-foreground">Game</span>
-            <span className="text-muted-foreground">UI</span>
+      <nav className="sticky top-0 left-0 right-0 z-50 w-full bg-neutral-950 border-b border-neutral-800">
+        <div className="w-full px-8 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="text-sm font-bold tracking-widest uppercase text-neutral-50">
+            UXSE Tools
           </Link>
 
+          {/* Navigation Links */}
           <div className="flex items-center gap-8">
             <Link
+              href="/"
+              className={`text-xs uppercase tracking-widest transition-colors ${
+                pathname === '/' ? 'text-neutral-50' : 'text-neutral-500 hover:text-neutral-50'
+              }`}
+            >
+              Explore
+            </Link>
+            <Link
               href="/games"
-              className={`text-sm uppercase tracking-widest transition-colors ${
-                isActive('/games') ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+              className={`text-xs uppercase tracking-widest transition-colors ${
+                isActive('/games') ? 'text-neutral-50' : 'text-neutral-500 hover:text-neutral-50'
               }`}
             >
               Games
             </Link>
             <Link
               href="/screenshots"
-              className={`text-sm uppercase tracking-widest transition-colors ${
-                isActive('/screenshots') ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+              className={`text-xs uppercase tracking-widest transition-colors ${
+                isActive('/screenshots') ? 'text-neutral-50' : 'text-neutral-500 hover:text-neutral-50'
               }`}
             >
               Screenshots
             </Link>
+          </div>
 
+          {/* Right Actions */}
+          <div className="flex items-center gap-6">
+            {/* Search Button */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+              className="p-2 text-neutral-50 hover:text-neutral-300 transition-colors"
+              aria-label="Search"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              <span className="text-xs text-muted-foreground border border-border rounded px-1.5 py-0.5">
-                {'⌘K'}
-              </span>
             </button>
+
+            {/* Submit Game Button */}
+            <Link
+              href="https://google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 text-xs uppercase tracking-widest text-neutral-50 border border-neutral-700 hover:border-neutral-500 transition-colors"
+            >
+              Submit Game
+            </Link>
           </div>
         </div>
       </nav>
 
+      {/* Search Modal */}
       {searchOpen && (
-        <div className="fixed inset-0 z-[200]">
-          <div
-            className="absolute inset-0 bg-background/70 backdrop-blur-sm"
-            onClick={() => {
-              setSearchOpen(false)
-              setQuery('')
-              setResults([])
-            }}
-          />
+        <div className="fixed inset-0 z-[200]" onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            setSearchOpen(false)
+            setQuery('')
+            setResults([])
+          }
+        }}>
+          <div className="absolute inset-0 bg-neutral-950/70 backdrop-blur-sm" />
 
-          <div className="relative max-w-xl mx-auto mt-[20vh]">
-            <div className="bg-card border border-border rounded-none shadow-2xl overflow-hidden">
-              <div className="flex items-center gap-3 px-4 border-b border-border">
-                <svg className="w-5 h-5 text-muted-foreground shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="relative max-w-2xl mx-auto mt-[15vh]">
+            <div className="bg-neutral-900 border border-neutral-800 shadow-2xl overflow-hidden">
+              <div className="flex items-center gap-3 px-6 py-4 border-b border-neutral-800">
+                <svg className="w-5 h-5 text-neutral-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <input
@@ -153,7 +174,7 @@ export default function Navbar() {
                   placeholder="Search games and screenshots..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="flex-1 bg-transparent py-4 text-foreground placeholder:text-muted-foreground focus:outline-none"
+                  className="flex-1 bg-transparent py-2 text-neutral-50 placeholder:text-neutral-600 focus:outline-none"
                 />
                 <button
                   onClick={() => {
@@ -161,17 +182,17 @@ export default function Navbar() {
                     setQuery('')
                     setResults([])
                   }}
-                  className="text-xs text-muted-foreground border border-border rounded-none px-1.5 py-0.5"
+                  className="text-xs text-neutral-500 border border-neutral-700 px-2 py-1"
                 >
                   ESC
                 </button>
               </div>
 
               {query.trim() && (
-                <div className="max-h-[40vh] overflow-y-auto">
+                <div className="max-h-[50vh] overflow-y-auto">
                   {loading ? (
-                    <div className="px-4 py-8 text-center text-muted-foreground text-sm">
-                      {'Searching...'}
+                    <div className="px-6 py-8 text-center text-neutral-500 text-sm">
+                      Searching...
                     </div>
                   ) : results.length > 0 ? (
                     <div className="py-2">
@@ -188,29 +209,29 @@ export default function Navbar() {
                             setQuery('')
                             setResults([])
                           }}
-                          className="flex items-center gap-3 px-4 py-2.5 hover:bg-accent transition-colors"
+                          className="flex items-center gap-3 px-6 py-3 hover:bg-neutral-800 transition-colors"
                         >
                           {result.image_url ? (
                             <img
                               src={result.image_url}
                               alt=""
-                              className="w-10 h-10 rounded object-cover bg-muted"
+                              className="w-10 h-10 object-cover bg-neutral-800 flex-shrink-0"
                             />
                           ) : (
-                            <div className="w-10 h-10 rounded bg-muted flex items-center justify-center text-muted-foreground">
+                            <div className="w-10 h-10 bg-neutral-800 flex items-center justify-center text-neutral-600 flex-shrink-0 text-xs">
                               {result.type === 'game' ? 'G' : 'S'}
                             </div>
                           )}
 
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm text-foreground truncate">{result.name}</p>
-                            <p className="text-xs text-muted-foreground capitalize">{result.type}</p>
+                            <p className="text-sm text-neutral-50 truncate">{result.name}</p>
+                            <p className="text-xs text-neutral-500 capitalize">{result.type}</p>
                           </div>
                         </Link>
                       ))}
                     </div>
                   ) : (
-                    <div className="px-4 py-8 text-center text-muted-foreground text-sm">
+                    <div className="px-6 py-8 text-center text-neutral-500 text-sm">
                       {'No results for "'}{query}{'"'}
                     </div>
                   )}
