@@ -40,21 +40,21 @@ function AccordionGroup({
   ).length
 
   return (
-    <div className="border-b border-zinc-800">
+    <div className="border-b border-border">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between py-4 px-1 text-left hover:text-white transition-colors"
+        className="w-full flex items-center justify-between py-4 px-1 text-left hover:text-foreground transition-colors"
       >
-        <span className="text-xs uppercase tracking-widest font-semibold text-zinc-300">
+        <span className="text-xs uppercase tracking-widest font-semibold text-foreground/80">
           {group_name}
           {activeCount > 0 && (
-            <span className="ml-2 text-white bg-zinc-700 px-1.5 py-0.5 rounded text-[10px]">
+            <span className="ml-2 text-primary-foreground bg-secondary px-1.5 py-0.5 rounded text-[10px]">
               {activeCount}
             </span>
           )}
         </span>
-        <span className="text-zinc-500 text-lg">
-          {isOpen ? '−' : '+'}
+        <span className="text-muted-foreground text-lg">
+          {isOpen ? '\u2212' : '+'}
         </span>
       </button>
 
@@ -68,8 +68,8 @@ function AccordionGroup({
                 onClick={() => onFilterChange(item.slug)}
                 className={`w-full flex items-center justify-between px-1 py-1.5 rounded text-sm transition-colors ${
                   isActive
-                    ? 'text-white'
-                    : 'text-zinc-400 hover:text-zinc-200'
+                    ? 'text-foreground'
+                    : 'text-muted-foreground hover:text-foreground/80'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
@@ -77,19 +77,19 @@ function AccordionGroup({
                   <div
                     className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
                       isActive
-                        ? 'bg-white border-white'
-                        : 'border-zinc-600'
+                        ? 'bg-primary border-primary'
+                        : 'border-input'
                     }`}
                   >
                     {isActive && (
-                      <svg className="w-2.5 h-2.5 text-black" viewBox="0 0 12 12" fill="none">
+                      <svg className="w-2.5 h-2.5 text-primary-foreground" viewBox="0 0 12 12" fill="none">
                         <path d="M2 6L5 9L10 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     )}
                   </div>
                   <span>{item.name}</span>
                 </div>
-                <span className="text-zinc-600 text-xs tabular-nums">{item.count}</span>
+                <span className="text-muted-foreground/60 text-xs tabular-nums">{item.count}</span>
               </button>
             )
           })}
@@ -111,12 +111,12 @@ export default function FilterSidebar({
         {/* Header */}
         {activeFilters.length > 0 && (
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xs text-zinc-400">
+            <span className="text-xs text-muted-foreground">
               {activeFilters.length} filter{activeFilters.length > 1 ? 's' : ''} active
             </span>
             <button
               onClick={onClearAll}
-              className="text-xs text-zinc-500 hover:text-white transition-colors underline"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors underline"
             >
               Clear all
             </button>

@@ -95,12 +95,12 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-zinc-800">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-xl font-bold tracking-tight">
-            🎮 <span className="text-white">Game</span>
-            <span className="text-zinc-400">UI</span>
+            <span className="text-foreground">Game</span>
+            <span className="text-muted-foreground">UI</span>
           </Link>
 
           {/* Navigation Links */}
@@ -108,7 +108,7 @@ export default function Navbar() {
             <Link
               href="/games"
               className={`text-sm uppercase tracking-widest transition-colors ${
-                isActive('/games') ? 'text-white' : 'text-zinc-400 hover:text-white'
+                isActive('/games') ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               Games
@@ -116,7 +116,7 @@ export default function Navbar() {
             <Link
               href="/screenshots"
               className={`text-sm uppercase tracking-widest transition-colors ${
-                isActive('/screenshots') ? 'text-white' : 'text-zinc-400 hover:text-white'
+                isActive('/screenshots') ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               Screenshots
@@ -125,12 +125,12 @@ export default function Navbar() {
             {/* Search Button */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
+              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              <span className="text-xs text-zinc-600 border border-zinc-700 rounded px-1.5 py-0.5">
+              <span className="text-xs text-muted-foreground border border-border rounded px-1.5 py-0.5">
                 ⌘K
               </span>
             </button>
@@ -143,7 +143,7 @@ export default function Navbar() {
         <div className="fixed inset-0 z-[200]">
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            className="absolute inset-0 bg-background/70 backdrop-blur-sm"
             onClick={() => {
               setSearchOpen(false)
               setQuery('')
@@ -153,10 +153,10 @@ export default function Navbar() {
 
           {/* Search Panel */}
           <div className="relative max-w-xl mx-auto mt-[20vh]">
-            <div className="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden">
               {/* Input */}
-              <div className="flex items-center gap-3 px-4 border-b border-zinc-800">
-                <svg className="w-5 h-5 text-zinc-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center gap-3 px-4 border-b border-border">
+                <svg className="w-5 h-5 text-muted-foreground shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <input
@@ -165,7 +165,7 @@ export default function Navbar() {
                   placeholder="Search games and screenshots..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="flex-1 bg-transparent py-4 text-white placeholder:text-zinc-500 focus:outline-none"
+                  className="flex-1 bg-transparent py-4 text-foreground placeholder:text-muted-foreground focus:outline-none"
                 />
                 <button
                   onClick={() => {
@@ -173,7 +173,7 @@ export default function Navbar() {
                     setQuery('')
                     setResults([])
                   }}
-                  className="text-xs text-zinc-500 border border-zinc-700 rounded px-1.5 py-0.5"
+                  className="text-xs text-muted-foreground border border-border rounded px-1.5 py-0.5"
                 >
                   ESC
                 </button>
@@ -183,7 +183,7 @@ export default function Navbar() {
               {query.trim() && (
                 <div className="max-h-[40vh] overflow-y-auto">
                   {loading ? (
-                    <div className="px-4 py-8 text-center text-zinc-500 text-sm">
+                    <div className="px-4 py-8 text-center text-muted-foreground text-sm">
                       Searching...
                     </div>
                   ) : results.length > 0 ? (
@@ -201,33 +201,33 @@ export default function Navbar() {
                             setQuery('')
                             setResults([])
                           }}
-                          className="flex items-center gap-3 px-4 py-2.5 hover:bg-zinc-800 transition-colors"
+                          className="flex items-center gap-3 px-4 py-2.5 hover:bg-accent transition-colors"
                         >
                           {/* Thumbnail */}
                           {result.image_url ? (
                             <img
                               src={result.image_url}
                               alt=""
-                              className="w-10 h-10 rounded object-cover bg-zinc-800"
+                              className="w-10 h-10 rounded object-cover bg-muted"
                             />
                           ) : (
-                            <div className="w-10 h-10 rounded bg-zinc-800 flex items-center justify-center text-zinc-600">
-                              {result.type === 'game' ? '🎮' : '📸'}
+                            <div className="w-10 h-10 rounded bg-muted flex items-center justify-center text-muted-foreground">
+                              {result.type === 'game' ? 'G' : 'S'}
                             </div>
                           )}
 
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm text-white truncate">{result.name}</p>
-                            <p className="text-xs text-zinc-500 capitalize">{result.type}</p>
+                            <p className="text-sm text-foreground truncate">{result.name}</p>
+                            <p className="text-xs text-muted-foreground capitalize">{result.type}</p>
                           </div>
                         </Link>
                       ))}
                     </div>
                   ) : (
-                    <div className="px-4 py-8 text-center text-zinc-500 text-sm">
+                    <div className="px-4 py-8 text-center text-muted-foreground text-sm">
                       No results for &ldquo;{query}&rdquo;
                     </div>
-                  )}
+                  )}}
                 </div>
               )}
             </div>

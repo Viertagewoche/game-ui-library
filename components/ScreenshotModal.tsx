@@ -69,25 +69,31 @@ export default function ScreenshotModal({
     <div className="fixed inset-0 z-[100] flex items-center justify-center">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/90 backdrop-blur-sm"
+        className="absolute inset-0 bg-background/90 backdrop-blur-sm"
         onClick={onClose}
       />
 
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-zinc-800/80 hover:bg-zinc-700 flex items-center justify-center text-white transition-colors"
+        className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground transition-colors"
+        aria-label="Close modal"
       >
-        ✕
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
       </button>
 
       {/* Prev Button */}
       {hasPrev && onPrev && (
         <button
           onClick={onPrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-zinc-800/80 hover:bg-zinc-700 flex items-center justify-center text-white text-xl transition-colors"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground text-xl transition-colors"
+          aria-label="Previous screenshot"
         >
-          ‹
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
         </button>
       )}
 
@@ -95,9 +101,12 @@ export default function ScreenshotModal({
       {hasNext && onNext && (
         <button
           onClick={onNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-zinc-800/80 hover:bg-zinc-700 flex items-center justify-center text-white text-xl transition-colors"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-secondary/80 hover:bg-secondary flex items-center justify-center text-foreground text-xl transition-colors"
+          aria-label="Next screenshot"
         >
-          ›
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
         </button>
       )}
 
@@ -115,7 +124,7 @@ export default function ScreenshotModal({
         {/* Bottom Bar */}
         <div className="mt-4 flex items-center justify-between">
           <div>
-            <h2 className="text-white font-semibold text-lg">{screenshot.title}</h2>
+            <h2 className="text-foreground font-semibold text-lg">{screenshot.title}</h2>
             <div className="flex items-center gap-3 mt-1">
               {/* Element Tags */}
               {screenshot.element_names && screenshot.element_names.length > 0 && (
@@ -123,7 +132,7 @@ export default function ScreenshotModal({
                   {screenshot.element_names.map((el) => (
                     <span
                       key={el}
-                      className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-zinc-700 text-zinc-400"
+                      className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-border text-muted-foreground"
                     >
                       {el}
                     </span>
@@ -138,7 +147,7 @@ export default function ScreenshotModal({
             {screenshot.game_slug && (
               <Link
                 href={`/games/${screenshot.game_slug}`}
-                className="px-4 py-2 rounded-lg border border-zinc-700 text-sm text-zinc-300 hover:text-white hover:border-zinc-500 transition-colors"
+                className="px-4 py-2 rounded-lg border border-border text-sm text-muted-foreground hover:text-foreground hover:border-ring transition-colors"
               >
                 Game Page
               </Link>
@@ -147,7 +156,7 @@ export default function ScreenshotModal({
             {/* Download Button */}
             <button
               onClick={handleDownload}
-              className="px-4 py-2 rounded-lg bg-white text-black text-sm font-medium hover:bg-zinc-200 transition-colors"
+              className="px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
             >
               Download
             </button>

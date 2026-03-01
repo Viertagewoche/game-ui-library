@@ -3,7 +3,10 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '../components/Navbar'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
   title: 'Game UI Library | Video Game Interface Collection',
@@ -17,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} bg-black text-white antialiased`}>
+      <body className={`${inter.variable} font-sans`}>
         <Navbar />
         <main className="pt-16">
           {children}

@@ -30,19 +30,19 @@ export default function ScreenshotCard({
       className="group cursor-pointer"
       onClick={onOpen}
     >
-      <div className="bg-zinc-900 rounded-lg overflow-hidden border border-zinc-800 hover:border-zinc-600 transition-all duration-300">
+      <div className="bg-card rounded-lg overflow-hidden border border-border hover:border-ring transition-all duration-300">
         {/* Screenshot Image */}
         <div className="aspect-video relative overflow-hidden">
           {/* Video Badge */}
           {media_type === 'video' && (
-            <div className="absolute top-2 right-2 z-10 bg-black/70 text-white text-xs px-2 py-1 rounded">
+            <div className="absolute top-2 right-2 z-10 bg-background/70 text-foreground text-xs px-2 py-1 rounded">
               VIDEO
             </div>
           )}
 
           {/* Loading Skeleton */}
           {!loaded && (
-            <div className="absolute inset-0 bg-zinc-800 animate-pulse" />
+            <div className="absolute inset-0 bg-muted animate-pulse" />
           )}
 
           <img
@@ -58,11 +58,11 @@ export default function ScreenshotCard({
 
         {/* Info */}
         <div className="p-3">
-          <h3 className="font-medium text-white text-sm leading-tight mb-1.5">{title}</h3>
+          <h3 className="font-medium text-card-foreground text-sm leading-tight mb-1.5">{title}</h3>
 
           {/* Game Name */}
           {game_name && (
-            <p className="text-xs text-zinc-500 mb-2">{game_name}</p>
+            <p className="text-xs text-muted-foreground mb-2">{game_name}</p>
           )}
 
           {/* Element Tags */}
@@ -71,7 +71,7 @@ export default function ScreenshotCard({
               {element_names.map((el) => (
                 <span
                   key={el}
-                  className="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-zinc-700 text-zinc-400"
+                  className="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-border text-muted-foreground"
                 >
                   {el}
                 </span>

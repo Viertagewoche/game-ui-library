@@ -106,10 +106,10 @@ export default function GamesClient({
     <div>
       {/* Hero Banner */}
       <section className="relative h-[30vh] flex items-end overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary to-background" />
         <div className="relative max-w-7xl mx-auto px-6 pb-8 w-full">
-          <h1 className="text-4xl font-bold">Games</h1>
-          <p className="text-zinc-400 mt-2">
+          <h1 className="text-4xl font-bold text-foreground">Games</h1>
+          <p className="text-muted-foreground mt-2">
             {filteredGames.length} game{filteredGames.length !== 1 ? 's' : ''} 
             {activeGenres.length > 0 && ` in ${activeGenres.join(', ')}`}
           </p>
@@ -129,19 +129,19 @@ export default function GamesClient({
                   placeholder="Search games..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-zinc-500 transition-colors"
+                  className="w-full bg-card border border-input rounded-lg px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-ring transition-colors"
                 />
               </div>
 
               {/* Sort */}
               <div className="mb-6">
-                <h3 className="text-xs uppercase tracking-widest text-zinc-500 font-semibold mb-3">
+                <h3 className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-3">
                   Sort by
                 </h3>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as SortOption)}
-                  className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-zinc-500"
+                  className="w-full bg-card border border-input rounded-lg px-3 py-2 text-sm text-foreground focus:outline-none focus:border-ring"
                 >
                   <option value="most-screenshots">Most screenshots</option>
                   <option value="newest">Newest first</option>
@@ -153,13 +153,13 @@ export default function GamesClient({
               {/* Genre Filter */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xs uppercase tracking-widest text-zinc-500 font-semibold">
+                  <h3 className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
                     Genres
                   </h3>
                   {activeGenres.length > 0 && (
                     <button
                       onClick={() => setActiveGenres([])}
-                      className="text-[10px] text-zinc-500 hover:text-white underline"
+                      className="text-[10px] text-muted-foreground hover:text-foreground underline"
                     >
                       Clear
                     </button>
@@ -181,27 +181,27 @@ export default function GamesClient({
                         onClick={() => toggleGenre(genre.name)}
                         className={`w-full flex items-center justify-between py-1.5 text-sm transition-colors ${
                           isActive
-                            ? 'text-white'
-                            : 'text-zinc-400 hover:text-zinc-200'
+                            ? 'text-foreground'
+                            : 'text-muted-foreground hover:text-foreground/80'
                         }`}
                       >
                         <div className="flex items-center gap-2.5">
                           <div
                             className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
                               isActive
-                                ? 'bg-white border-white'
-                                : 'border-zinc-600'
+                                ? 'bg-primary border-primary'
+                                : 'border-input'
                             }`}
                           >
                             {isActive && (
-                              <svg className="w-2.5 h-2.5 text-black" viewBox="0 0 12 12" fill="none">
+                              <svg className="w-2.5 h-2.5 text-primary-foreground" viewBox="0 0 12 12" fill="none">
                                 <path d="M2 6L5 9L10 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                               </svg>
                             )}
                           </div>
                           <span>{genre.name}</span>
                         </div>
-                        <span className="text-xs text-zinc-600 tabular-nums">{count}</span>
+                        <span className="text-xs text-muted-foreground/60 tabular-nums">{count}</span>
                       </button>
                     )
                   })}
@@ -227,13 +227,13 @@ export default function GamesClient({
               </div>
             ) : (
               <div className="text-center py-20">
-                <p className="text-zinc-500 text-lg">No games found.</p>
+                <p className="text-muted-foreground text-lg">No games found.</p>
                 <button
                   onClick={() => {
                     setActiveGenres([])
                     setSearchQuery('')
                   }}
-                  className="mt-4 text-sm text-zinc-400 hover:text-white underline"
+                  className="mt-4 text-sm text-muted-foreground hover:text-foreground underline"
                 >
                   Clear all filters
                 </button>
