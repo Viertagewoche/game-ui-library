@@ -30,12 +30,12 @@ export default function ScreenshotCard({
       className="group cursor-pointer"
       onClick={onOpen}
     >
-      <div className="bg-card rounded-lg overflow-hidden border border-border hover:border-ring transition-all duration-300">
+      <div className="bg-card rounded-none overflow-hidden border border-border hover:border-ring transition-all duration-300">
         {/* Screenshot Image */}
         <div className="aspect-video relative overflow-hidden">
           {/* Video Badge */}
           {media_type === 'video' && (
-            <div className="absolute top-2 right-2 z-10 bg-background/70 text-foreground text-xs px-2 py-1 rounded">
+            <div className="absolute top-2 right-2 z-10 bg-background/70 text-foreground text-xs px-2 py-1 rounded-none">
               VIDEO
             </div>
           )}
@@ -71,7 +71,7 @@ export default function ScreenshotCard({
               {element_names.map((el) => (
                 <span
                   key={el}
-                  className="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-border text-muted-foreground"
+                  className="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded-none border border-border text-muted-foreground"
                 >
                   {el}
                 </span>

@@ -122,7 +122,7 @@ export default function Navbar() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              <span className="text-xs text-muted-foreground border border-border rounded px-1.5 py-0.5">
+              <span className="text-xs text-muted-foreground border border-border rounded-none px-1.5 py-0.5">
                 {'⌘K'}
               </span>
             </button>
@@ -142,7 +142,7 @@ export default function Navbar() {
           />
 
           <div className="relative max-w-xl mx-auto mt-[20vh]">
-            <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-none shadow-2xl overflow-hidden">
               <div className="flex items-center gap-3 px-4 border-b border-border">
                 <svg className="w-5 h-5 text-muted-foreground shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -161,7 +161,7 @@ export default function Navbar() {
                     setQuery('')
                     setResults([])
                   }}
-                  className="text-xs text-muted-foreground border border-border rounded px-1.5 py-0.5"
+                  className="text-xs text-muted-foreground border border-border rounded-none px-1.5 py-0.5"
                 >
                   ESC
                 </button>
@@ -194,10 +194,10 @@ export default function Navbar() {
                             <img
                               src={result.image_url}
                               alt=""
-                              className="w-10 h-10 rounded object-cover bg-muted"
+                              className="w-10 h-10 rounded-none object-cover bg-muted"
                             />
                           ) : (
-                            <div className="w-10 h-10 rounded bg-muted flex items-center justify-center text-muted-foreground">
+                            <div className="w-10 h-10 rounded-none bg-muted flex items-center justify-center text-muted-foreground">
                               {result.type === 'game' ? 'G' : 'S'}
                             </div>
                           )}
