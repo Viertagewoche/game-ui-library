@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Geist_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '../components/Navbar'
 
-const inter = Inter({
+const geistMono = Geist_Mono({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-geist-mono',
 })
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} font-sans`}>
+      <body className={`${geistMono.variable} font-mono`}>
         <Navbar />
         <main className="pt-16">
           {children}
