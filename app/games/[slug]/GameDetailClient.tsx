@@ -65,7 +65,7 @@ export default function GameDetailClient({
             <img
               src={game.cover_image_url}
               alt={game.name}
-              className="w-24 h-32 object-cover rounded-none border border-border shadow-2xl"
+              className="w-24 h-32 object-cover rounded-lg border border-border shadow-2xl"
             />
           )}
           <div>
@@ -84,7 +84,7 @@ export default function GameDetailClient({
                 {genreNames.map((genre) => (
                   <span
                     key={genre}
-                    className="text-xs px-2.5 py-1 rounded-none border border-border text-muted-foreground"
+                    className="text-xs px-2.5 py-1 rounded border border-border text-muted-foreground"
                   >
                     {genre}
                   </span>
@@ -106,7 +106,7 @@ export default function GameDetailClient({
                 <h3 className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-3">
                   Sort by
                 </h3>
-                <select className="w-full bg-card border border-input rounded-none px-3 py-2 text-sm text-foreground">
+                <select className="w-full bg-card border border-input rounded-lg px-3 py-2 text-sm text-foreground">
                   <option>Most popular</option>
                   <option>Newest first</option>
                   <option>A–Z</option>
@@ -142,7 +142,7 @@ export default function GameDetailClient({
                       >
                         <div className="flex items-center gap-2">
                           <div
-                            className={`w-3.5 h-3.5 rounded-none border flex items-center justify-center ${
+                            className={`w-3.5 h-3.5 rounded border flex items-center justify-center ${
                               isActive ? 'bg-primary border-primary' : 'border-input'
                             }`}
                           >

@@ -48,7 +48,7 @@ function AccordionGroup({
         <span className="text-xs uppercase tracking-widest font-semibold text-foreground/80">
           {group_name}
           {activeCount > 0 && (
-            <span className="ml-2 text-primary-foreground bg-secondary px-1.5 py-0.5 rounded-none text-[10px]">
+            <span className="ml-2 text-primary-foreground bg-secondary px-1.5 py-0.5 rounded text-[10px]">
               {activeCount}
             </span>
           )}
@@ -66,7 +66,7 @@ function AccordionGroup({
               <button
                 key={item.slug}
                 onClick={() => onFilterChange(item.slug)}
-                className={`w-full flex items-center justify-between px-1 py-1.5 rounded-none text-sm transition-colors ${
+                className={`w-full flex items-center justify-between px-1 py-1.5 rounded text-sm transition-colors ${
                   isActive
                     ? 'text-foreground'
                     : 'text-muted-foreground hover:text-foreground/80'
@@ -75,7 +75,7 @@ function AccordionGroup({
                 <div className="flex items-center gap-2.5">
                   {/* Checkbox */}
                   <div
-                    className={`w-4 h-4 rounded-none border flex items-center justify-center transition-colors ${
+                    className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
                       isActive
                         ? 'bg-primary border-primary'
                         : 'border-input'

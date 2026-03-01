@@ -58,13 +58,13 @@ export default async function Home() {
           <div className="flex gap-4 justify-center">
             <Link
               href="/screenshots"
-              className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-none hover:bg-primary/90 transition-colors"
+              className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
             >
               Browse Screenshots
             </Link>
             <Link
               href="/games"
-              className="px-6 py-3 border border-border text-foreground font-semibold rounded-none hover:border-ring transition-colors"
+              className="px-6 py-3 border border-border text-foreground font-semibold rounded-lg hover:border-ring transition-colors"
             >
               View Games
             </Link>
@@ -86,7 +86,7 @@ export default async function Home() {
               <Link
                 key={genre.slug}
                 href={`/games?genre=${genre.slug}`}
-                className="shrink-0 bg-card border border-border hover:border-ring rounded-none p-5 min-w-[180px] transition-colors"
+                className="shrink-0 bg-card border border-border hover:border-ring rounded-lg p-5 min-w-[180px] transition-colors"
               >
                 <h3 className="font-semibold text-card-foreground">{genre.name}</h3>
                 <p className="text-xs text-muted-foreground mt-1">{genre.game_count} games</p>
@@ -132,7 +132,7 @@ export default async function Home() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {screenshots.map((s: any) => (
               <Link key={s.slug} href="/screenshots" className="group">
-                <div className="aspect-video rounded-none overflow-hidden bg-card border border-border hover:border-ring transition-colors">
+                <div className="aspect-video rounded-lg overflow-hidden bg-card border border-border hover:border-ring transition-colors">
                   <img
                     src={s.thumbnail_url || s.image_url}
                     alt={s.title}
